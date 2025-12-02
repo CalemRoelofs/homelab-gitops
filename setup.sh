@@ -18,4 +18,8 @@ bash cluster/monitoring/gatus/helm.sh
 bash cluster/apps/freshrss/helm.sh
 kustomize build cluster/apps/freshrss | kubectl apply -f -
 
+# Setup Immich
+kustomize build cluster/apps/immich | kubectl apply -f -
+bash cluster/apps/immich/helm.sh
+
 echo "Finished setting up cluster services!"

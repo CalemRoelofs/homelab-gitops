@@ -6,5 +6,6 @@ namespace: infra
 resources:
   - secrets/freshrss-pg-secret.yaml 
   - secrets/pg-appuser-secret.yaml
+  - secrets/immich-pg-secret.yaml
   - cluster.yaml
   - service.yaml
