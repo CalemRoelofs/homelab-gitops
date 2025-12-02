@@ -12,6 +12,11 @@ freshrss:
     admin:
       username: admin
       password: admin
+  persistence:
+    data:
+      size: 1G
+    extensions:
+      size: 1G
 ingress:
   enabled: true
   hosts:
