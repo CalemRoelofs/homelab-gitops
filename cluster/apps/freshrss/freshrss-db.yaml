@@ -1,0 +1,10 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Database
+metadata:
+  name: freshrss-db
+  namespace: infra
+spec:
+  name: freshrss
+  owner: freshrss
+  cluster:
+    name: homelab-pg

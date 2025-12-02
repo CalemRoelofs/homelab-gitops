@@ -1,0 +1,18 @@
+ingress:
+  enabled: true
+  name: "gatus-ingress"
+  hosts:
+    - gatus.lan
+config:
+  endpoints:
+    - name: freshrss
+      url: http://freshrss.freshrss.svc.cluster.local:8080
+      conditions:
+        - "[STATUS] == 200"
+    - name: postgres
+      url: https://pg-health.infra.svc.cluster.local:8000/healthz
+      client:
+        insecure: true
+      conditions:
+        - "[STATUS] == 200"
+

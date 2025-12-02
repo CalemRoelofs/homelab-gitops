@@ -1,0 +1,18 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: homelab-pg
+spec:
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.0-system-trixie
+
+  managed:
+    roles:
+      - name: freshrss
+        ensure: present
+        login: true
+        superuser: false
+        passwordSecret:
+          name: freshrss-pg-secret
+  storage:
+    size: 1Gi

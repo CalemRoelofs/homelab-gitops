@@ -1,0 +1,22 @@
+externalPostgresql:
+  hostname: homelab-pg-rw.infra.svc.cluster.local
+  auth:
+    username: freshrss
+    password: freshrss
+    database: freshrss
+freshrss:
+  database:
+    type: postgresql
+  initialization:
+    enabled: true
+    admin:
+      username: admin
+      password: admin
+ingress:
+  enabled: true
+  hosts:
+    - host: freshrss.lan
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+

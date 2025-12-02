@@ -1,0 +1,17 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: freshrss
+
+resources:
+  - rendered.yaml
+  - freshrss-pg-secret.yaml
+  - namespace.yaml
+  - freshrss-db.yaml
+
+
+patches:
+  - path: add-initcontainer.yaml
+    target:
+      kind: Deployment
+      name: freshrss
