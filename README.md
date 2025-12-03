@@ -18,3 +18,6 @@ bash setup.sh
 /usr/local/bin/k3s-uninstall.sh
 ```
 
+## Useful plugins and tools
+
+- [CNPG Kubectl Plugin](https://cloudnative-pg.io/documentation/1.20/kubectl-plugin/)
