@@ -14,10 +14,6 @@ kustomize build cluster/infra/cnpg | kubectl apply -f -
 # Setup Gatus
 bash cluster/monitoring/gatus/helm.sh
 
-# Setup FreshRSS
-bash cluster/apps/freshrss/helm.sh
-kustomize build cluster/apps/freshrss | kubectl apply -f -
-
 # Setup Immich
 kustomize build cluster/apps/immich | kubectl apply -f -
 bash cluster/apps/immich/helm.sh
