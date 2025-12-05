@@ -5,8 +5,8 @@ ingress:
     - gatus.lan
 config:
   endpoints:
-    - name: freshrss
-      url: http://freshrss.freshrss.svc.cluster.local:8080
+    - name: immich
+      url: http://immich-server.immich.svc.cluster.local:2283/healthz
       conditions:
         - "[STATUS] == 200"
     - name: postgres
