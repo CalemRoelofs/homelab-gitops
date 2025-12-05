@@ -1,21 +1,27 @@
 # Homelab GitOps Cluster
 
-## Setup k3s
+## Dependencies
+
+```
+sudo dnf install python3 python3-pip cloud-utils kubectl helm
+```
+
+## Setup Ubuntu Server VM
 
 ```shell
-curl -sfL https://get.k3s.io | sh -
-sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+./server/create-ubuntu-server-vm.sh
+```
+
+## Setup k3s on ubuntu node
+
+```shell
+./ansible/setups-k3s.sh
 ```
 
 ## Setup cluster
 
 ```shell
-bash setup.sh
-```
-
-## Destroy everything and uninstall k3s
-```shell
-/usr/local/bin/k3s-uninstall.sh
+./cluster/setup.sh
 ```
 
 ## Useful plugins and tools
