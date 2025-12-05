@@ -1,0 +1,32 @@
+#cloud-config
+
+autoinstall:
+  version: 1
+  identity:
+    hostname: ubuntu
+    password: $6$6Kj1VEnOk4WZwx2I$QXpPVPB6kFtl6Q7nsfDjMsXUX9.lOHyCvRgRheTl8v9FvemybSlhs5vTxvdhw6wB8IHUV8oPkD431sN5snIWA/
+    username: dave
+  keyboard:
+    layout: pl
+  network:
+    version: 2
+    ethernets:
+      enp1s0:
+        addresses:
+          - "192.168.100.202/24"
+        routes:
+          - to: default
+            via: "192.168.100.1"
+        nameservers: 
+          addresses: 
+            - "1.1.1.1"
+            - "1.0.0.1"
+  ssh:
+    install-server: yes
+    authorized_keys: 
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEComF3H7265bhHubs6K5UTtgidH6zVA0cMox83HUQxj dave@stickerbomb"
+  packages:
+    - git
+  snaps:
+   - name: helm
+     classic: true

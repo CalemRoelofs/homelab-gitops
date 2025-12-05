@@ -1,1 +1,4 @@
 rendered.yaml
+*.iso
+*.img
+.envrc
