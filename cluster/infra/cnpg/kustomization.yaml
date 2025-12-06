@@ -7,5 +7,6 @@ resources:
   - secrets/freshrss-pg-secret.yaml 
   - secrets/pg-appuser-secret.yaml
   - secrets/immich-pg-secret.yaml
+  - secrets/garage-cnpg-backup-secret.yaml
   - cluster.yaml
   - service.yaml
