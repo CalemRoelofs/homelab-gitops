@@ -30,3 +30,7 @@ autoinstall:
   snaps:
    - name: helm
      classic: true
+  late-commands:
+    # Disable multipathd to prevent interference with Longhorn
+    # See: https://longhorn.io/kb/troubleshooting-volume-with-multipath/
+    - curtin in-target -- systemctl disable multipathd && systemctl stop multipathd || true

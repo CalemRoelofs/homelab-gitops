@@ -1,14 +1,23 @@
 #!/usr/bin/env bash
 set -euxo pipefail
 
-# Setup Headlamp
-bash kube-system/headlamp/helm.sh
+cd "$(dirname "$0")"
 
-# Create infra namespace
-kubectl apply -f infra/namespace.yaml
+# # Setup Headlamp
+# bash kube-system/headlamp/helm.sh
 
-# Setup CNPG and databases
-bash infra/cnpg/helm.sh
+# # Setup Longhorn
+# bash infra/longhorn/helm.sh
+
+# # Create infra namespace
+# kubectl apply -f infra/namespace.yaml
+
+# # Setup CNPG and databases
+# bash infra/cnpg/helm.sh
+
+# date
+
+# sleep 120
 
 # Wait for CNPG to finish being set up
 until kubectl get svc -n cnpg-system | grep cnpg-webhook-service; do
@@ -25,7 +34,7 @@ bash monitoring/gatus/helm.sh
 # Setup Immich
 kustomize build apps/immich | kubectl apply -f -
 
-until kubectl cnpg psql -n infra homelab-pg -- -d immich  -c "\d"; do
+until kubectl cnpg psql -n infra homelab-pg -- -d immich  -c "SELECT 1;"; do
   echo "Waiting for Immich database to be ready..."
   sleep 5
 done
