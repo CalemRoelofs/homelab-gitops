@@ -5,27 +5,27 @@ metadata:
 spec:
   instances: 3
   imageName: ghcr.io/cloudnative-pg/postgresql:18.0-system-trixie
-  bootstrap:
-    recovery:
-      source: homelab-pg
-  externalClusters:
-    - name: homelab-pg
-      barmanObjectStore:
-        destinationPath: "s3://cnpg-backup/"
-        endpointURL: http://192.168.100.57:3900
-        s3Credentials:
-          accessKeyId:
-            name: garage-cnpg-backup-secret
-            key: ACCESS_KEY_ID
-          secretAccessKey:
-            name: garage-cnpg-backup-secret
-            key: ACCESS_SECRET_KEY
-          region:
-            name: garage-cnpg-backup-secret
-            key: REGION
+  # bootstrap:
+  #   recovery:
+  #     source: homelab-pg
+  # externalClusters:
+  #   - name: homelab-pg
+  #     barmanObjectStore:
+  #       destinationPath: "s3://cnpg-backup/"
+  #       endpointURL: http://192.168.100.57:3900
+  #       s3Credentials:
+  #         accessKeyId:
+  #           name: garage-cnpg-backup-secret
+  #           key: ACCESS_KEY_ID
+  #         secretAccessKey:
+  #           name: garage-cnpg-backup-secret
+  #           key: ACCESS_SECRET_KEY
+  #         region:
+  #           name: garage-cnpg-backup-secret
+  #           key: REGION
   backup:
     barmanObjectStore:
-      destinationPath: "s3://cnpg-backup-4/"
+      destinationPath: "s3://cnpg-backup/"
       endpointURL: http://192.168.100.57:3900
       s3Credentials:
         accessKeyId:
@@ -39,12 +39,6 @@ spec:
           key: REGION
   managed:
     roles:
-      - name: freshrss
-        ensure: present
-        login: true
-        superuser: false
-        passwordSecret:
-          name: freshrss-pg-secret
       - name: immich
         ensure: present
         login: true
