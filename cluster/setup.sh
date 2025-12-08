@@ -8,6 +8,9 @@ bash infra/cert-manager/helm.sh
 # Apply Cert-Manager configurations
 kustomize build infra/cert-manager | kubectl apply -f -
 
+# Setup ArgoCD
+kustomize build infra/argocd | kubectl apply -f -
+
 # Setup Headlamp
 bash kube-system/headlamp/helm.sh
 
