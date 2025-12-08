@@ -1,11 +1,11 @@
-metadata_dir = "/tmp/meta"
-data_dir = "/tmp/data"
+metadata_dir = "/var/lib/garage/meta"
+data_dir = "/var/lib/garage/data"
 db_engine = "sqlite"
 
 replication_factor = 1
 
 rpc_bind_addr = "[::]:3901"
-rpc_public_addr = "192.168.100.57:3901"
+rpc_public_addr = "127.0.0.1:3901"
 rpc_secret = "3b7160b65f508080b8d8f2e3aea00f2ba4375abaaf4b9ab47fd8a1a5e5f45694"
 
 [s3_api]
