@@ -7,3 +7,14 @@ ingress:
   # -- Hostname of the Layer 7 load balancer.
   host: longhorn.lan
   path: /
+
+  # -- Annotations for Ingress resource
+  annotations:
+    cert-manager.io/cluster-issuer: spnw-intermediate-ca1-issuer
+    cert-manager.io/common-name: "longhorn.lan"
+
+  # -- Ingress TLS configuration
+  tls: 
+    - secretName: longhorn-cert-secret
+      hosts:
+        - longhorn.lan

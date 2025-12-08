@@ -3,21 +3,26 @@ set -euxo pipefail
 
 cd "$(dirname "$0")"
 
-# # Setup Headlamp
-# bash kube-system/headlamp/helm.sh
+# Setup Cert-Manager
+bash infra/cert-manager/helm.sh
+# Apply Cert-Manager configurations
+kustomize build infra/cert-manager | kubectl apply -f -
 
-# # Setup Longhorn
-# bash infra/longhorn/helm.sh
+# Setup Headlamp
+bash kube-system/headlamp/helm.sh
 
-# # Create infra namespace
-# kubectl apply -f infra/namespace.yaml
+# Setup Longhorn
+bash infra/longhorn/helm.sh
 
-# # Setup CNPG and databases
-# bash infra/cnpg/helm.sh
+# Create infra namespace
+kubectl apply -f infra/namespace.yaml
 
-# date
+# Setup CNPG and databases
+bash infra/cnpg/helm.sh
 
-# sleep 120
+date
+
+sleep 120
 
 # Wait for CNPG to finish being set up
 until kubectl get svc -n cnpg-system | grep cnpg-webhook-service; do
